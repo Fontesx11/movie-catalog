@@ -1,8 +1,8 @@
 .movie-display article{
     width: 100%;
-    background-color: #FFFFFF;
-    padding: 15px;
+    padding: 30px;
     border-radius: 4px;
+    
 }
 
 .movie-display strong{
@@ -10,6 +10,7 @@
     text-align: center;
     font-size: 22px;
     display: block;
+    
 }
 
 .movie-display img{
@@ -20,6 +21,7 @@
     display: block;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.25);
 }
 
 .movie-display a{
@@ -33,5 +35,6 @@
     color: #FFFFFF;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.25);
 
 }

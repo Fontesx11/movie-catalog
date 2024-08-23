@@ -1,8 +1,11 @@
+import './style.css'
 
 function Movie() {
 
     return(
-        <>Movies</>
+       <div className="movie">
+        <h1>Movies</h1>
+       </div>
     )
 }
 

@@ -44,13 +44,12 @@ function Home() {
                             <MovieDisplay
                                 id={movie.id}
                                 title={movie.title}
-                                posterPath={movie.poster_path}
+                                posterPath={movie.backdrop_path}
                             />
                         );
                     })
                 )}
             </div>
-
         </div>
     );
 }
