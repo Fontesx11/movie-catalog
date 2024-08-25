@@ -1,5 +1,6 @@
 .movie-info{
     margin-top: 18px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     max-width: 800px;
@@ -14,7 +15,7 @@
     width: 880px;
     border-radius: 8px;
     max-width: 100%;
-    max-height: 540px;
+    max-height: 340px;
     object-fit: cover;
 }
 
@@ -23,7 +24,8 @@
 }
 
 .movie-info span{
-    margin: 8px 0;
+    margin-top: 6px;
+    margin-bottom: 12px;
 }
 
 .button-area button{
@@ -44,7 +46,7 @@
     color: #FFFFFF;
 }
 
-.button-area a:hover{
+.button-area button:hover a{
     color: #FFFFFF;
 }
 
