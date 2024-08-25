@@ -14,10 +14,11 @@ function Home() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+
         async function loadMovies() {
             const response = await api.get("movie/now_playing", {
                 params: {
-                    api_key: "67516dda184a61ee9e9dd721d6ea8b99",
+                    api_key: process.env.REACT_APP_API_KEY,
                     language: "pt-BR",
                     page: "1"
                 }
@@ -42,6 +43,7 @@ function Home() {
                     movies.map((movie) => {
                         return (
                             <MovieDisplay
+                                key={movie.id}
                                 id={movie.id}
                                 title={movie.title}
                                 posterPath={movie.backdrop_path}

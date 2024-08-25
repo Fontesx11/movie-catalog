@@ -15,9 +15,10 @@ function Movie() {
 
     useEffect(() => {
 
+
         api.get(`/movie/${id}`, {
             params: {
-                api_key: "67516dda184a61ee9e9dd721d6ea8b99",
+                api_key: process.env.REACT_APP_API_KEY,
                 language: "pt-BR"
             }
         }).then((response) => {
@@ -33,6 +34,26 @@ function Movie() {
             console.log("componente foi desmontado")
         }
     }, [id, navigate])
+
+    function handleSaveMovie() {
+        
+        const myList = localStorage.getItem("@primeflix")
+
+        let savedMovies = JSON.parse(myList) || [];
+
+        const hasMovie = savedMovies.some((m) => { return m.id === movie.id})
+
+        if (hasMovie) {
+            alert("Esse filme já foi Salvo")
+            return
+        }
+
+        savedMovies.push(movie)
+
+        localStorage.setItem("@primeflix", JSON.stringify(savedMovies))
+        alert("filme salvo!")
+
+    }
 
     if (loading) {
         return (
@@ -53,7 +74,7 @@ function Movie() {
             <strong>Avaliação: {(movie.vote_average).toFixed(1)} / 10</strong>
 
             <div className='button-area'>
-                <button>Salvar</button>
+                <button onClick={handleSaveMovie}>Salvar</button>
                 <button>
                     <a href={`https://youtube.com/results?search_query=${movie.title} Trailer`} target='_blank' rel="external noreferrer">
                         Trailer
