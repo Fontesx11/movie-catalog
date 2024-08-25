@@ -37,7 +37,7 @@ function Home() {
             <div className="movie-list">
                 {loading ? (
                     Array(10).fill().map((_, index) => (
-                        <MovieSkeleton index={index} />
+                        <MovieSkeleton index={index} key={index}/>
                     ))
                 ) : (
                     movies.map((movie) => {
