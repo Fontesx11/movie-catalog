@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { useParams, useNavigate } from 'react-router-dom';
+import SkeletonPlaceHolder from './Skeleton';
 import './style.css'
+
 
 function Movie() {
 
@@ -11,44 +13,45 @@ function Movie() {
     const [movie, setMovie] = useState({})
     const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
 
         api.get(`/movie/${id}`, {
-            params:{
+            params: {
                 api_key: "67516dda184a61ee9e9dd721d6ea8b99",
                 language: "pt-BR"
-        }}).then((response)=>{
-            console.log(response.data)
+            }
+        }).then((response) => {
             setMovie(response.data)
             setLoading(false)
-        }).catch(()=>{
+
+        }).catch(() => {
             console.log("Error ao Encontrar a o filme")
-            navigate('/')
+            navigate('/', { replace: true })
         })
 
-        return ()=>{
+        return () => {
             console.log("componente foi desmontado")
         }
-    },[id, navigate])
+    }, [id, navigate])
 
-    if(loading){
-        return(
+    if (loading) {
+        return (
             <div>
-                <h1 style={{marginTop: "20px"}}>Carregando Filme....</h1>
+                <SkeletonPlaceHolder />
             </div>
         )
     }
 
-    return(
-       <div className="movie-info">
+    return (
+        <div className="movie-info">
             <h1>{movie.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
+            <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} />
 
             <h3>Sinopse</h3>
             <span>{movie.overview}</span>
 
             <strong>Avaliação: {(movie.vote_average).toFixed(1)} / 10</strong>
-            
+
             <div className='button-area'>
                 <button>Salvar</button>
                 <button>
@@ -58,7 +61,7 @@ function Movie() {
                 </button>
             </div>
 
-       </div>
+        </div>
     )
 }
 
