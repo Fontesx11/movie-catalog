@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { useParams, useNavigate } from 'react-router-dom';
 import SkeletonPlaceHolder from './Skeleton';
+import { toast } from 'react-toastify';
 import './style.css'
 
 
@@ -44,14 +45,14 @@ function Movie() {
         const hasMovie = savedMovies.some((m) => { return m.id === movie.id})
 
         if (hasMovie) {
-            alert("Esse filme já foi Salvo")
+            toast.warn("Esse filme já está na sua lista!")
             return
         }
 
         savedMovies.push(movie)
 
         localStorage.setItem("@primeflix", JSON.stringify(savedMovies))
-        alert("filme salvo!")
+        toast.success("Filme salvo com sucesso!")
 
     }
 

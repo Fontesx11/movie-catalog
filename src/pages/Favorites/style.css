@@ -38,3 +38,8 @@
     margin-right: 12px;
     color: #116feb;
 }
+
+.fav-movies div button{
+   font-size: 14px;
+   padding: 4px;
+}
