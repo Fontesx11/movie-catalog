@@ -15,8 +15,6 @@ function Movie() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-
-
         api.get(`/movie/${id}`, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
@@ -27,18 +25,14 @@ function Movie() {
             setLoading(false)
 
         }).catch(() => {
-            console.log("Error ao Encontrar a o filme")
             navigate('/', { replace: true })
         })
 
-        return () => {
-            console.log("componente foi desmontado")
-        }
     }, [id, navigate])
 
     function handleSaveMovie() {
         
-        const myList = localStorage.getItem("@primeflix")
+        const myList = localStorage.getItem("@maxflix:mylist")
 
         let savedMovies = JSON.parse(myList) || [];
 
@@ -51,7 +45,7 @@ function Movie() {
 
         savedMovies.push(movie)
 
-        localStorage.setItem("@primeflix", JSON.stringify(savedMovies))
+        localStorage.setItem("@maxflix:mylist", JSON.stringify(savedMovies))
         toast.success("Filme salvo com sucesso!")
 
     }

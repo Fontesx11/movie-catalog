@@ -5,9 +5,6 @@ import MovieDisplay from "../../components/MovieDisplay";
 import MovieSkeleton from "../../components/MovieDisplay/MovieSkeleton/MovieSkeleton.js";
 
 
-//https://api.themoviedb.org/3/movie/now_playing?api_key=67516dda184a61ee9e9dd721d6ea8b99&language=pt-BR
-
-
 function Home() {
 
     const [movies, setMovies] = useState([]);

@@ -9,7 +9,7 @@ function Favorites() {
 
     useEffect(() => {
 
-        const movieList = localStorage.getItem("@primeflix")
+        const movieList = localStorage.getItem("@maxflix:mylist")
         setMovies(JSON.parse(movieList) || [])
 
     }, [])
@@ -19,7 +19,7 @@ function Favorites() {
      let newList = movies.filter((item)=>item.id !== id)
 
      setMovies(newList)
-     localStorage.setItem("@primeflix", JSON.stringify(newList))
+     localStorage.setItem("@maxflix:mylist", JSON.stringify(newList))
      toast.success("Filme deletado com sucesso!")
     }
 
@@ -36,9 +36,7 @@ function Favorites() {
 
                             <div>
                                 <Link to={`/movie/${item.id}`}>Ver Detalhes</Link>
-                                <button onClick={()=>{
-                                    handleMovieDelete(item.id)
-                                }}>
+                                <button onClick={()=>{handleMovieDelete(item.id)}}>
                                     Excluir
                                 </button>
                             </div>
